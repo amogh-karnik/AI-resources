@@ -1,30 +1,27 @@
-**Assignment: The project proposals should be a single PDF file less than two pages in length and  cover the following four points:**  
-### What task will you address, and why is it interesting? 
-*(This can be as simple as a couple of sentences.)*
+**Assignment: The project proposals should be a single PDF file less than two pages in length and cover the following four points:**
 
-We are going to be examining the biology of aging in a population of Amish individuals. We will be using data aggregated from previous studies which examined in particular, a loss-of-function mutation in the gene encoding PAI-1 (*plasminogen activator inhibitor-1*), and its relationship with enhanced longevity in this specific population. We have a number of features including clinical phenotype data (vital signs, blood work, and imaging results), RNA transcriptome data, proteomics data, and DNA-methylation data.  Patients have also been classified by their genotype at the PAI-1 locus.
+1. What task will you address, and why is it interesting?
 
-See the published research article at: https://www.science.org/doi/10.1126/sciadv.aao1617
-### How will you acquire your data?
+We will examine the biology of aging in a population of Amish individuals. We will be using data aggregated from previous studies which examined in particular, a loss-of-function mutation in the gene encoding PAI-1 (*plasminogen activator inhibitor-1*), and its relationship with enhanced longevity in this specific population. We have a number of features including clinical phenotype data (vital signs, blood work, and imaging results), RNA transcriptome data, proteomics data, and DNA-methylation data. Patients have also been classified by their genotype at the PAI-1 locus.
 
-The three project members are already included on an IRB-approved research team with approval to directly access all of the data. There are a number of data sets which will require cleaning and de-identification, prior to merger for inclusion in the overall analysis.
-### Which features/attributes will you use for your task?  
+[This article by Khan et al](https://www.science.org/doi/10.1126/sciadv.aao1617) will be used as a reference point for our work. 
 
-We will be working primarily with the clinical phenotype for the first task, a classification task developing a model to classify PAI-1 genotype status (wild-type, heterozygote, homozygote) using only these clinical data. 
 
-For the second task, we will incorporate other -omics data as available.
+2. How will you acquire your data?
 
-### What will your initial approach be? 
-#### What data pre-processing will you do?
+The three project members are already included on an FSM IRB-approved research team with approval to directly access all of the data. There are a number of data sets which will require cleaning and de-identification, prior to merger for inclusion in the overall analysis.
 
-We will need to de-identify the data by removing any potential personally-identifiable information. Exploratory Data Analysis will be performed to examine the attributes and assess any correlation between features. Features with a high degree of missingness will be excluded. Missing values will be imputed based on mean for normally distributed variables or median for skewed distributions. The mode will be used for categorical variables. Continuous data will require normalization.
+3.  Which features/attributes will you use for your task?
 
-#### Which machine learning techniques (decision trees, KNN, K-Means, Gaussian mixture models, etc.)   will you use?
+We will be working primarily with the clinical phenotype for the first task, a classification task developing a model to classify PAI-1 genotype status (wild-type, heterozygote, homozygote) using only these clinical data. We will use basic demographic information, vital signs (blood pressure, heart rate, oxygen saturation), blood tests (blood counts, serum chemistries, cardiac biomarkers), echocardiogram results, cardiopulmonary exercise testing results, pulmonary function testing results, among other clinical data attributes. We do not intend on exploring the use of genomics, proteomics, DNA methylation data, and RNA sequence data at this stage, but will consider exploring how these attributes affect our model's performance pending additional exploratory data analysis. 
 
-We plan to use a KNN model for the classification task looking at the PAI-1 genotype classification for patients based on phenotypic information.
+3.  What will your initial approach be?
+	- What data pre-processing will you do?
+		We will need to de-identify the data by removing any potential personally-identifiable information. Exploratory Data Analysis will be performed to examine the attributes and assess any correlation between features. Features with a high degree of missingness will be excluded. Missing values will be imputed based on mean for normally distributed variables or median for skewed distributions. The mode will be used for categorical variables. Continuous data will require normalization.
 
-We will use a Gaussian Mixture Model for the regression based on chronological age. 
-
-#### How will you evaluate your success (Note: you must use a quantitative metric)? 
-*(Generally you will likely use mean-squared error for regression tasks and precision-recall for classification tasks. Think about how you will organize your model outputs to calculate these metrics.)*
-
+  
+	- Which machine learning techniques (decision trees, KNN, K-Means, Gaussian mixture models, etc.) will you use?
+		We plan to use a K-nearest neighbors model for the classification task looking at the PAI-1 genotype classification for patients based on clinical information. 
+		
+	- How will you evaluate your success (Note: you must use a quantitative metric)?
+		We intend on using a precision-recall framework in order to evaluate the effectiveness of our classification model. Given that we are looking for a model to balance both precision and recall, we will calculate an F1 score to assess the overall model performance. 
